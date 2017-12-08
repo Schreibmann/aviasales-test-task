@@ -74,7 +74,7 @@ toggleSelectAll(e) {
 
     if ( this.state.filterItemsAllChecked !== true )  { 
 
-          currentStopsSelection = [0, 1, 2, 3]; 
+          currentStopsSelection = this.state.initialStops; 
     }    
 
   this.setState ({

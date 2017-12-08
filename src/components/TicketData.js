@@ -3,13 +3,20 @@ import React from 'react';
 class TicketData extends React.Component {
 
 	formatDate(d) {
+
+
+		let dateParts = d.split('.');
+		let correctDate = new Date(dateParts[1] + '.' + dateParts[0] + '.' + dateParts[2]);
+
 			
+		console.log( correctDate );
+
 		const months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
     	const days   = ['Вс', 'Пн', 'Вт', 'Ср', 'ЧТ', 'ПТ', 'Сб'];
-    	const month  = new Date(d).getMonth();
-    	const date 	 = new Date(d).getDate();
-    	const year   = new Date(d).getFullYear();
-    	const day    = new Date(d).getDay();
+    	const month  = correctDate.getMonth();
+    	const date 	 = correctDate.getDate();
+    	const year   = correctDate.getFullYear();
+    	const day    = correctDate.getDay();
     	
    			return ( date + " " + months[month] + " " +  year + ", " + days[day] )
 	}
