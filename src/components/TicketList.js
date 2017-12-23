@@ -5,13 +5,7 @@ class TicketList extends React.Component {
 
     render() {
 
-        var TicketItems = this.props.ticketData.map( function (val, key) {
-
-            return (
-
-                <TicketData ticketData={val} key={key}/>
-            )
-        });
+        var TicketItems = this.props.ticketData.map( (val, key) => <TicketData ticketData={val} key={key}/> );
 
         return (
 

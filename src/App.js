@@ -19,12 +19,12 @@ constructor(props) {
         filterItemsAllChecked: true
       };
 
- this.getTicketsData('tickets.json');  
+ 	this.getTicketsData('tickets.json');  
 }
 
 getTicketsData(data) {
 
-  $.getJSON( data, function (result) {
+  $.getJSON( data, (result) => {
 
       result.tickets.sort( (first, next) => first.price - next.price ); /* sort by price */
 
@@ -40,17 +40,17 @@ getTicketsData(data) {
         filterItemsChecked: checked
       });
 
-  }.bind(this));
+  });
 }
 
 setUniqueStops(data) { // all possible stops count in tickets data [0,1,2,3]
 
-  let allStops = data.map( function (val) { // get all stops from all tickets
+  	let allStops = data.map(  (val) => { // get all stops from all tickets
 
-      return  val.stops;   
-  }); 
+      	return  val.stops;   
+  	}); 
 
-  allStops.sort( (first, next) => first - next ); 
+  	allStops.sort( (first, next) => first - next ); 
 
     const uniqueStops = allStops.filter( (e,i,a) => !i || e !== a[i - 1] ); // remove repeating
 
@@ -59,10 +59,7 @@ setUniqueStops(data) { // all possible stops count in tickets data [0,1,2,3]
 
 applyFilter(filterVal) { // filter tickets according selected stops [1,2]
 
-    var newData = this.state.ticketData.filter( (obj) => { // tickets with selected stops count  
-
-                return filterVal.indexOf(obj.stops) > -1
-    });                
+    var newData = this.state.ticketData.filter( (obj) => filterVal.indexOf(obj.stops) > -1 ); // tickets with selected stops count                
     
     this.setState({ticketDataFiltered: newData});            
 }
@@ -132,18 +129,6 @@ uncheckOther (checkedItem) {
   this.applyFilter( [checkedItem] );
 }
 
-resetFilter () {
-
-  this.setState({ 
-
-       filterItemsChecked: [false, false, false, false],
-       filterItemsAllChecked: false,
-       selectedStops: []
-  }); 
-
-  this.applyFilter([]);
-};
-
   render() {
 
     return (
@@ -162,7 +147,6 @@ resetFilter () {
             setStops={e => this.setStops(e)} 
             toggleSelectAll={e => this.toggleSelectAll(e)}
             uncheckOther={checkedItem => this.uncheckOther(checkedItem)}
-            resetFilter={() => this.resetFilter()}
             initialStops={this.state.initialStops} 
             selectedStops={this.state.selectedStops} 
             ticketData={this.state.ticketData}

@@ -7,10 +7,10 @@ class StopsFilter extends React.Component {
 
         const ticketData = this.props.ticketData;
         
-        var filterItems = this.props.initialStops.map(function (e, i, a) {
+        let filterItems = this.props.initialStops.map( (e, i, a) => {
 
             const stopsLabel = (e > 1) ? e + " Пересадки" : (e === 1) ? ("1 Пересадка") : "Без пересадок";      // format stops label
-            const cheapestPrice = ticketData.filter( function(ticket){ return ticket.stops === e; } )[0].price; // get cheapest price for each stops count
+            const cheapestPrice = ticketData.filter( (ticket) => ticket.stops === e )[0].price; // get cheapest price for each stops count
             const itemId = e;                                                                                   // uniq id for each checkbox
             const checked = this.props.filterItemsChecked[i];                                                   // state for each checkbox
 
@@ -27,7 +27,7 @@ class StopsFilter extends React.Component {
                 />
             )
 
-        }.bind(this)); 
+        }); 
 
         return (
 
