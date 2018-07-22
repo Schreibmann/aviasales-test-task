@@ -1,11 +1,10 @@
-
-
 .price.\--rub:after {
     content: "\20BD"
 }
 
 .price.\--rub:after,
-.price.\--rub:before, {
+.price.\--rub:before,
+{
     font-family: currency
 }
 
@@ -234,7 +233,7 @@
 
 .airline-logos img {
     display: block;
-    max-width:100%
+    max-width: 100%
 }
 
 .ticket__button-wrapper {
@@ -245,11 +244,12 @@
     float: left;
     display: block;
     padding: 20px 20px 15px 20px
-};
+}
+
+;
 
 .buy-button {
     position: relative;
-    
 }
 
 .buy-button__button {
@@ -346,7 +346,6 @@
     /*top: 25px;*/
     height: 100px;
     padding-top: 10px;
-    
 }
 
 .segment-route__path-line {
@@ -1059,7 +1058,6 @@
         transition: transform .2s ease-in-out;
         transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out, -o-transform .2s ease-in-out
     }
-
 }
 
 @media (min-width:1280px) {
@@ -1161,7 +1159,9 @@ html {
 
 body {
     background-color: azure;
-};
+}
+
+;
 
 .body {
     height: 100%;
@@ -1375,7 +1375,7 @@ body {
 }
 
 .logo {
-    height: 30px;    
+    height: 30px;
     background-size: auto 30px;
     position: inherit;
     z-index: 1;
