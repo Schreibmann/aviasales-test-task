@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import $ from "jquery";
+//import $ from "jquery";
 import TicketList from "./components/TicketList";
 import StopsFilter from "./components/StopsFilter";
 
@@ -16,27 +16,30 @@ class App extends Component {
       ticketDataFiltered: [],
       filterItemsAllChecked: true
     };
+  }
 
+  componentDidMount() {
     this.getTicketsData("tickets.json");
   }
 
-  getTicketsData(data) {
-    $.getJSON(data, result => {
-      result.tickets.sort(
-        (first, next) => first.price - next.price
-      ); /* sort by price */
-
-      let stops = this.setUniqueStops(result.tickets);
-      let checked = new Array(stops.length).fill(true); // set all filter items to "checked"
-
-      this.setState({
-        ticketData: result.tickets,
-        ticketDataFiltered: result.tickets,
-        initialStops: stops,
-        selectedStops: stops,
-        filterItemsChecked: checked
-      });
-    });
+  getTicketsData() {
+    fetch("tickets.json")
+      .then(res => res.json())
+      .then(data => {
+        const stops = this.setUniqueStops(data.tickets);
+        const checked = new Array(stops.length).fill(true); // set all filter items to "checked"
+        const sortedData = data.tickets.sort(
+          (first, next) => first.price - next.price
+        ); /* sort by price */
+        this.setState({
+          ticketData: sortedData,
+          ticketDataFiltered: sortedData,
+          initialStops: stops,
+          selectedStops: stops,
+          filterItemsChecked: checked
+        });
+      })
+      .catch(error => console.log(error));
   }
 
   setUniqueStops(data) {
