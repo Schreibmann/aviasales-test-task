@@ -11,7 +11,7 @@ class TicketData extends React.Component {
 			"Фев",
 			"Мар",
 			"Апр",
-			"Май",
+			"Мая",
 			"Июн",
 			"Июл",
 			"Авг",
@@ -20,7 +20,7 @@ class TicketData extends React.Component {
 			"Ноя",
 			"Дек"
 		];
-		const days = ["Вс", "Пн", "Вт", "Ср", "ЧТ", "ПТ", "Сб"];
+		const days = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 		const month = correctDate.getMonth();
 		const date = correctDate.getDate();
 		const year = correctDate.getFullYear();

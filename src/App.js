@@ -42,29 +42,19 @@ class App extends Component {
       .catch(error => console.log(error));
   }
 
-  setUniqueStops(data) {
-    // all possible stops count in tickets data [0,1,2,3]
-
-    let allStops = data.map(val => {
-      // get all stops from all tickets
-
+  setUniqueStops(data) { // all possible stops count in tickets data [0,1,2,3]
+    let allStops = data.map(val => { // get all stops from all tickets
       return val.stops;
     });
-
     allStops.sort((first, next) => first - next);
-
     const uniqueStops = allStops.filter((e, i, a) => !i || e !== a[i - 1]); // remove repeating
-
     return uniqueStops;
   }
 
-  applyFilter(filterVal) {
-    // filter tickets according selected stops [1,2]
-
-    var newData = this.state.ticketData.filter(
+  applyFilter(filterVal) { // filter tickets according selected stops
+    var newData = this.state.ticketData.filter( // tickets with selected stops count
       obj => filterVal.indexOf(obj.stops) > -1
-    ); // tickets with selected stops count
-
+    ); 
     this.setState({ ticketDataFiltered: newData });
   }
 
@@ -87,14 +77,12 @@ class App extends Component {
     this.applyFilter(currentStopsSelection);
   }
 
-  setStops(e) {
-    // applying filter every time user clicks some filter item
+  setStops(e) { // applying filter every time user clicks some filter item
 
     const filterItemClicked = parseInt(e.target.id, 10);
     let currentStopsSelection = [];
 
-    if (this.state.selectedStops.indexOf(filterItemClicked) > -1) {
-      // add or remove values from selectedStops array
+    if (this.state.selectedStops.indexOf(filterItemClicked) > -1) { // add or remove values from selectedStops array
 
       currentStopsSelection = this.state.selectedStops.filter(
         s => s !== filterItemClicked
